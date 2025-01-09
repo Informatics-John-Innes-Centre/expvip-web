@@ -330,7 +330,7 @@ namespace :load_data do
   task :sample_genes, [:filename] => :environment do |t, args|
     puts "file provided #{args.filename}"
     genes = File.open(args.filename).read
-    genes.gsub!(/\r\n?/, "")
+    # genes.gsub!(/\r\n?/, "")
     all_genes = []
     ActiveRecord::Base.transaction do
       SampleGene.delete_all
