@@ -1,0 +1,18 @@
+[Unit]
+Description=SequenceServer server daemon
+Documentation="file://sequenceserver --help" "http://sequenceserver.com/doc"
+After=network.target
+
+[Service]
+Type=simple
+User=sequenceserver
+Environment="BLAST_USAGE_REPORT=false"
+Environment="PATH=/home/sequenceserver/.local/bin:/home/sequenceserver/bin:/root/.local/bin:/root/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin"
+ExecStart=/home/sequenceserver/bin/sequenceserver --devel --config /home/sequenceserver/.sequenceserver.conf
+KillMode=process
+Restart=on-failure
+RestartSec=42s
+RestartPreventExitStatus=255
+
+[Install]
+WantedBy=multi-user.target
