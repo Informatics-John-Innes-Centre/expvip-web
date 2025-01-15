@@ -5,13 +5,14 @@
 <strong><%= @gene.search_by%>:</strong> <span id="search_gene_name"><%= @gene.name %></span> 
 <%= link_to "Ensembl", @gene.ensembl %>
 <%= link_to "KnetMiner", @gene.knetminer %>
+<%= link_to "JBrowse", "/jbrowse?config=config.json&loc="+@gene.name+"&assembly="+@gene.gene_set+".chromosomes&tracks="+@gene.gene_set+".chromosomes-ReferenceSequenceTrack,Aet"+@gene.gene_set+"_v1" %>
 
- 
 <% if @compare.name != "" %>
  <strong>Compare:</strong>
  <span id="compare_gene_name"><%= @compare.name %></span>   
  <%= link_to "Ensembl", @compare.ensembl %>
  <%= link_to "KnetMiner", @compare.knetminer %>
+ <%= link_to "JBrowse", "/jbrowse?config=config.json&loc="+@compare.name+"&assembly="+@gene.gene_set+".chromosomes&tracks="+@gene.gene_set+".chromosomes-ReferenceSequenceTrack,Aet"+@gene.gene_set+"_v1" %>
 <% end %>
 
 <div id="bar_expression_viewer"> </div>

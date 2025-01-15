@@ -1,0 +1,185 @@
+{
+  "assemblies": [
+    {
+      "name": "TA10171.chromosomes",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "TA10171.chromosomes-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "TA10171_L1.chromosomes.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "TA10171_L1.chromosomes.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "TA1675.chromosomes",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "TA1675.chromosomes-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "TA1675_L2.chromosomes.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "TA1675_L2.chromosomes.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "TA2576.chromosomes",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "TA2576.chromosomes-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "TA2576_L3.chromosomes.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "TA2576_L3.chromosomes.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    }
+  ],
+  "configuration": {},
+  "connections": [],
+  "defaultSession": {
+    "name": "New Session"
+  },
+  "tracks": [
+    {
+      "type": "FeatureTrack",
+      "geneSet": "TA10171",
+      "trackId": "AetTA10171_v1",
+      "name": "AetTA10171_v1",
+      "assemblyNames": [
+        "TA10171.chromosomes"
+      ],
+      "category": [
+        "Annotation"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "AetTA10171_v1.sorted.gff"
+        }
+      },
+      "formatDetails": {
+        "feature": "jexl:{expvip:'<a href=/genes/show?gene_set=TA10171&name='+feature.id+'&search_by=gene>'+feature.id+'</a>'}"
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "AetTA1675_v1",
+      "name": "AetTA1675_v1",
+      "assemblyNames": [
+        "TA1675.chromosomes"
+      ],
+      "category": [
+        "Annotation"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "AetTA1675_v1.sorted.gff"
+        }
+      },
+      "formatDetails": {
+        "feature": "jexl:{expvip:'<a href=/genes/show?gene_set=TA1675&name='+feature.id+'&search_by=gene>'+feature.id+'</a>'}"
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "AetTA2576_v1",
+      "name": "AetTA2576_v1",
+      "assemblyNames": [
+        "TA2576.chromosomes"
+      ],
+      "category": [
+        "Annotation"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "AetTA2576_v1.sorted.gff"
+        }
+      },
+      "formatDetails": {
+        "feature": "jexl:{expvip:'<a href=/genes/show?gene_set=TA2576&name='+feature.id+'&search_by=gene>'+feature.id+'</a>'}"
+      }
+    }
+  ],
+  "aggregateTextSearchAdapters": [
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "TA10171.chromosomes-index",
+      "ixFilePath": {
+        "uri": "trix/TA10171_L1.chromosomes.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/TA10171_L1.chromosomes.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/TA10171_L1.chromosomes_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "TA10171.chromosomes"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "TA1675.chromosomes-index",
+      "ixFilePath": {
+        "uri": "trix/TA1675_L2.chromosomes.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/TA1675_L2.chromosomes.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/TA1675_L2.chromosomes_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "TA1675.chromosomes"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "TA2576.chromosomes-index",
+      "ixFilePath": {
+        "uri": "trix/TA2576_L3.chromosomes.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/TA2576_L3.chromosomes.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/TA2576_L3.chromosomes_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "TA2576.chromosomes"
+      ]
+    }
+  ]
+}
