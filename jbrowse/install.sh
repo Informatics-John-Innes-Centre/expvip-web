@@ -1,5 +1,5 @@
 #!/bin/bash
 
-jbrowse create ../public/jbrowse2
+/usr/local/bin/jbrowse create ../public/jbrowse2
 cp config.json ../public/jbrowse2
 
