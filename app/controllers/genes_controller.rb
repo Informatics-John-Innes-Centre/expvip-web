@@ -85,8 +85,8 @@ class GenesController < ApplicationController
 
   def forwardCommon
     gene_name = nil
-    gene_name = params[:gene]
-    gene_name = params[:query] if params[:query]
+    gene_name = params[:gene].to_s
+    gene_name = params[:query].to_s if params[:query]
     gene_name.gsub!(/\s+/, '')
     @gene_set = getGeneset
     session[:heatmap] = false
@@ -107,7 +107,7 @@ class GenesController < ApplicationController
 
   def forwardCompare
     forwardCommon
-    compare = params[:compare].gsub(/\s+/, '')
+    compare = params[:compare].to_s.gsub(/\s+/, '')
     @compare, @search_by_compare = GenesHelper.findGeneName compare, @gene_set
     raise "Can't compare gene vs transcript" unless @search_by == @search_by_compare
     redirect_to  action: "show", 
@@ -143,7 +143,8 @@ class GenesController < ApplicationController
 
   def autocomplete
     gene_set_id = session[:gene_set_id] 
-    @genes = Gene.order(:name).where("name LIKE ? and gene_set_id = ?", "%#{params[:term]}%", gene_set_id).limit(20)
+    term = ActiveRecord::Base.sanitize_sql_like(params[:term].to_s)
+    @genes = Gene.order(:name).where("name LIKE ? and gene_set_id = ?", "%#{term}%", gene_set_id).limit(20)
 
     respond_to do |format|
       format.html

@@ -9,18 +9,18 @@ class ExpressionValue < ActiveRecord::Base
 	limit = 1000
 	result = true
 	while(result)
-	  	sql=%{SELECT 
-		genes.name as name ,
-		accession, value, genes.id, experiments.id
+		sql = [%{
+		SELECT 
+			expression_values.*, genes.name as name, experiments.accession as accession
 		FROM 
 			`expression_values` 
 		INNER JOIN `genes` ON `genes`.`id` = `expression_values`.`gene_id` 
 		INNER JOIN `type_of_values` ON `type_of_values`.`id` = `expression_values`.`type_of_value_id` 
 		INNER JOIN `experiments` ON `experiments`.`id` = `expression_values`.`experiment_id` 
 		WHERE 
-			`type_of_values`.`name` = '#{unit}'  
+			`type_of_values`.`name` = :unit  
 		ORDER BY genes.id DESC ,  experiments.id DESC 
-		LIMIT #{limit} OFFSET #{offset} ; }
+		LIMIT #{limit} OFFSET #{offset} ; }, { unit: unit }]
 		offset += limit
 		ExpressionValue.find_by_sql(sql).each do |vals|
 			row = [vals.name, vals.accession, vals.value]
@@ -30,7 +30,7 @@ class ExpressionValue < ActiveRecord::Base
   end
 
   def self.find_expression_for_gene(gene_id)
-  	sql=%{SELECT 
+		sql = [%{SELECT 
     gene_id,
     genes.name as gene_name,
     expression_values.value,
@@ -58,12 +58,12 @@ FROM
 		INNER JOIN
 	experiment_groups ON experiment_groups_experiments.experiment_group_id = experiment_groups.id
 WHERE
-    genes.id = '#{gene_id}'
+    genes.id = :gene_id
 ORDER by	
 	type_of_values.id,
 	studies.id,
 	experiments.id
-; }
+; }, { gene_id: gene_id }]
 
 
 	rows = ExpressionValue.find_by_sql sql
