@@ -37,4 +37,4 @@ RUN chmod +x dbconfig.sh
 EXPOSE 3000
 ENV HOST=0.0.0.0
 HEALTHCHECK --interval=5s --timeout=30s --retries=30 CMD [ "/bin/bash", "-c", "curl -f http://localhost:3000/health || exit 1"]
-CMD ["/bin/bash", "-c", "/app/dbconfig.sh && npm start"]
+CMD ["/bin/bash", "-c", "rm -f /app/tmp/pids/server.pid && /app/dbconfig.sh && npm start"]

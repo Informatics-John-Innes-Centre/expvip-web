@@ -175,6 +175,7 @@ class GenesController < ApplicationController
       name: genes_arr
     }
 
+    # ENSEMBL LINKS GENERATE HERE !!
     # Generate links to other websites (limit of 70 genes to generate a link to KnetMiner)
     if genes_arr.length <= 70
       @link = Link.all
@@ -237,8 +238,12 @@ class GenesController < ApplicationController
     site_name = nil
     @link.each do |url_element|
       site_name = url_element.site_name
+      Rails.logger.debug "URL ELEMENT: #{url_element}"
       if site_name == "knetminer" and params[:search_by] == "transcript"
-        gene[site_name] = url_element.url.gsub("<gene>", Gene.find_by(:transcript=>params[:name]).gene)
+        query = Gene.find_by(:transcript=>params[:name]).gene
+        Rails.logger.debug "query is: #{query}"
+        $stdout.flush
+        gene[site_name] = url_element.url.gsub("<gene>", query)
         compare[site_name] = url_element.url.gsub("<gene>", Gene.find_by(:transcript=>params[:compare]).gene) unless compare[:name] == ""
       else
         gene[site_name] = url_element.url.gsub("<gene>", gene[:gene])

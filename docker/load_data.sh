@@ -9,4 +9,5 @@ rails load_data:values_mongo[Study001,TestGenome,tpm,/data/test_minimal_exp001_t
 rails load_data:values_mongo[Study001,TestGenome,tpm,/data/test_minimal_exp002_tpm.tsv]
 rails load_data:values_mongo[Study001,TestGenome,counts,/data/test_minimal_exp001_count.tsv]
 rails load_data:values_mongo[Study001,TestGenome,counts,/data/test_minimal_exp002_count.tsv]
+rails load_data:links[/data/links.csv]
 EOF
